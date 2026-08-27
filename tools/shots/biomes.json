@@ -1,0 +1,62 @@
+[
+  {
+    "name": "biome-00-beach",
+    "setup": "subwave.worldClock.setDayFraction(0.32); const r = subwave.jumpTo(0); subwave.player.lampOn = r.depth > 150; window.__pin = (window.__pin || 0) + 1; const tok = window.__pin;(function pin(){ if (window.__pin !== tok) return; const p = subwave.player; if (!p.inVessel) { p.position[1] = r.y; p.prevPosition[1] = r.y; p.velocity[1] = 0; p.oxygen = p.oxygenCapacity; } requestAnimationFrame(pin); })();"
+  },
+  {
+    "name": "biome-01-basalt",
+    "setup": "subwave.worldClock.setDayFraction(0.32); const r = subwave.jumpTo(1); subwave.player.lampOn = r.depth > 150; window.__pin = (window.__pin || 0) + 1; const tok = window.__pin;(function pin(){ if (window.__pin !== tok) return; const p = subwave.player; if (!p.inVessel) { p.position[1] = r.y; p.prevPosition[1] = r.y; p.velocity[1] = 0; p.oxygen = p.oxygenCapacity; } requestAnimationFrame(pin); })();"
+  },
+  {
+    "name": "biome-02-reef",
+    "setup": "subwave.worldClock.setDayFraction(0.32); const r = subwave.jumpTo(2); subwave.player.lampOn = r.depth > 150; window.__pin = (window.__pin || 0) + 1; const tok = window.__pin;(function pin(){ if (window.__pin !== tok) return; const p = subwave.player; if (!p.inVessel) { p.position[1] = r.y; p.prevPosition[1] = r.y; p.velocity[1] = 0; p.oxygen = p.oxygenCapacity; } requestAnimationFrame(pin); })();"
+  },
+  {
+    "name": "biome-03-coral",
+    "setup": "subwave.worldClock.setDayFraction(0.32); const r = subwave.jumpTo(3); subwave.player.lampOn = r.depth > 150; window.__pin = (window.__pin || 0) + 1; const tok = window.__pin;(function pin(){ if (window.__pin !== tok) return; const p = subwave.player; if (!p.inVessel) { p.position[1] = r.y; p.prevPosition[1] = r.y; p.velocity[1] = 0; p.oxygen = p.oxygenCapacity; } requestAnimationFrame(pin); })();"
+  },
+  {
+    "name": "biome-04-sand",
+    "setup": "subwave.worldClock.setDayFraction(0.32); const r = subwave.jumpTo(4); subwave.player.lampOn = r.depth > 150; window.__pin = (window.__pin || 0) + 1; const tok = window.__pin;(function pin(){ if (window.__pin !== tok) return; const p = subwave.player; if (!p.inVessel) { p.position[1] = r.y; p.prevPosition[1] = r.y; p.velocity[1] = 0; p.oxygen = p.oxygenCapacity; } requestAnimationFrame(pin); })();"
+  },
+  {
+    "name": "biome-05-kelp",
+    "setup": "subwave.worldClock.setDayFraction(0.32); const r = subwave.jumpTo(5); subwave.player.lampOn = r.depth > 150; window.__pin = (window.__pin || 0) + 1; const tok = window.__pin;(function pin(){ if (window.__pin !== tok) return; const p = subwave.player; if (!p.inVessel) { p.position[1] = r.y; p.prevPosition[1] = r.y; p.velocity[1] = 0; p.oxygen = p.oxygenCapacity; } requestAnimationFrame(pin); })();"
+  },
+  {
+    "name": "biome-06-boulders",
+    "setup": "subwave.worldClock.setDayFraction(0.32); const r = subwave.jumpTo(6); subwave.player.lampOn = r.depth > 150; window.__pin = (window.__pin || 0) + 1; const tok = window.__pin;(function pin(){ if (window.__pin !== tok) return; const p = subwave.player; if (!p.inVessel) { p.position[1] = r.y; p.prevPosition[1] = r.y; p.velocity[1] = 0; p.oxygen = p.oxygenCapacity; } requestAnimationFrame(pin); })();"
+  },
+  {
+    "name": "biome-07-break",
+    "setup": "subwave.worldClock.setDayFraction(0.32); const r = subwave.jumpTo(7); subwave.player.lampOn = r.depth > 150; window.__pin = (window.__pin || 0) + 1; const tok = window.__pin;(function pin(){ if (window.__pin !== tok) return; const p = subwave.player; if (!p.inVessel) { p.position[1] = r.y; p.prevPosition[1] = r.y; p.velocity[1] = 0; p.oxygen = p.oxygenCapacity; } requestAnimationFrame(pin); })();"
+  },
+  {
+    "name": "biome-08-spires",
+    "setup": "subwave.worldClock.setDayFraction(0.32); const r = subwave.jumpTo(8); subwave.player.lampOn = r.depth > 150; window.__pin = (window.__pin || 0) + 1; const tok = window.__pin;(function pin(){ if (window.__pin !== tok) return; const p = subwave.player; if (!p.inVessel) { p.position[1] = r.y; p.prevPosition[1] = r.y; p.velocity[1] = 0; p.oxygen = p.oxygenCapacity; } requestAnimationFrame(pin); })();"
+  },
+  {
+    "name": "biome-09-terrace",
+    "setup": "subwave.worldClock.setDayFraction(0.32); const r = subwave.jumpTo(9); subwave.player.lampOn = r.depth > 150; window.__pin = (window.__pin || 0) + 1; const tok = window.__pin;(function pin(){ if (window.__pin !== tok) return; const p = subwave.player; if (!p.inVessel) { p.position[1] = r.y; p.prevPosition[1] = r.y; p.velocity[1] = 0; p.oxygen = p.oxygenCapacity; } requestAnimationFrame(pin); })();"
+  },
+  {
+    "name": "biome-10-canyon",
+    "setup": "subwave.worldClock.setDayFraction(0.32); const r = subwave.jumpTo(10); subwave.player.lampOn = r.depth > 150; window.__pin = (window.__pin || 0) + 1; const tok = window.__pin;(function pin(){ if (window.__pin !== tok) return; const p = subwave.player; if (!p.inVessel) { p.position[1] = r.y; p.prevPosition[1] = r.y; p.velocity[1] = 0; p.oxygen = p.oxygenCapacity; } requestAnimationFrame(pin); })();"
+  },
+  {
+    "name": "biome-11-abyssal",
+    "setup": "subwave.worldClock.setDayFraction(0.32); const r = subwave.jumpTo(11); subwave.player.lampOn = r.depth > 150; window.__pin = (window.__pin || 0) + 1; const tok = window.__pin;(function pin(){ if (window.__pin !== tok) return; const p = subwave.player; if (!p.inVessel) { p.position[1] = r.y; p.prevPosition[1] = r.y; p.velocity[1] = 0; p.oxygen = p.oxygenCapacity; } requestAnimationFrame(pin); })();"
+  },
+  {
+    "name": "biome-12-trenchwall",
+    "setup": "subwave.worldClock.setDayFraction(0.32); const r = subwave.jumpTo(12); subwave.player.lampOn = r.depth > 150; window.__pin = (window.__pin || 0) + 1; const tok = window.__pin;(function pin(){ if (window.__pin !== tok) return; const p = subwave.player; if (!p.inVessel) { p.position[1] = r.y; p.prevPosition[1] = r.y; p.velocity[1] = 0; p.oxygen = p.oxygenCapacity; } requestAnimationFrame(pin); })();"
+  },
+  {
+    "name": "biome-13-trenchfloor",
+    "setup": "subwave.worldClock.setDayFraction(0.32); const r = subwave.jumpTo(13); subwave.player.lampOn = r.depth > 150; window.__pin = (window.__pin || 0) + 1; const tok = window.__pin;(function pin(){ if (window.__pin !== tok) return; const p = subwave.player; if (!p.inVessel) { p.position[1] = r.y; p.prevPosition[1] = r.y; p.velocity[1] = 0; p.oxygen = p.oxygenCapacity; } requestAnimationFrame(pin); })();"
+  },
+  {
+    "name": "biome-manual-coords",
+    "setup": "subwave.worldClock.setDayFraction(0.32); const r = subwave.jumpTo('0 240'); subwave.player.lampOn = false; window.__pin = (window.__pin || 0) + 1; const tok = window.__pin;(function pin(){ if (window.__pin !== tok) return; const p = subwave.player; if (!p.inVessel) { p.position[1] = r.y; p.prevPosition[1] = r.y; p.velocity[1] = 0; p.oxygen = p.oxygenCapacity; } requestAnimationFrame(pin); })();"
+  }
+]

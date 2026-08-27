@@ -1,0 +1,30 @@
+[
+  {
+    "name": "scatter-reef-floor",
+    "setup": "subwave.worldClock.setDayFraction(0.5); __shot.place(0, -9, 240, 1.2, -0.42); subwave.setPaused(true);"
+  },
+  {
+    "name": "scatter-reef-close",
+    "setup": "subwave.worldClock.setDayFraction(0.5); __shot.place(0, -14, 244, 1.2, -0.85); subwave.setPaused(true);"
+  },
+  {
+    "name": "scatter-beach",
+    "setup": "subwave.worldClock.setDayFraction(0.32); const p = subwave.spawn.position; __shot.place(p[0], p[1] + 1.6, p[2], subwave.spawn.shoreBearing + 2.4, -0.22); subwave.setPaused(true);"
+  },
+  {
+    "name": "scatter-kelp",
+    "setup": "subwave.worldClock.setDayFraction(0.5); __shot.place(-820, -38, 980, 0.6, -0.22); subwave.setPaused(true);"
+  },
+  {
+    "name": "scatter-sand",
+    "setup": "subwave.worldClock.setDayFraction(0.5); __shot.place(640, -58, 1180, 2.1, -0.35); subwave.setPaused(true);"
+  },
+  {
+    "name": "scatter-twilight",
+    "setup": "subwave.worldClock.setDayFraction(0.5); __shot.place(455, -118, 1926, 1.0, -0.30); subwave.setPaused(true);"
+  },
+  {
+    "name": "scatter-deep-dark",
+    "setup": "subwave.worldClock.setDayFraction(0.0); __shot.place(455, -118, 1926, 1.0, -0.30); subwave.setPaused(true);"
+  }
+]

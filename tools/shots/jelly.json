@@ -1,0 +1,30 @@
+[
+  {
+    "name": "jelly-arrival",
+    "setup": "subwave.worldClock.setDayFraction(0.32); subwave.jumpTo('jelly'); const c = subwave.renderer.camera;window.__pin=(window.__pin||0)+1; const tok=window.__pin;(function pin(){ if(window.__pin!==tok) return; const p=subwave.player; p.position[0]=28; p.position[1]=-141.1; p.position[2]=2026;p.prevPosition.set(p.position); p.velocity.fill(0); p.oxygen=p.oxygenCapacity;p.yaw=-0.8224; p.pitch=-0.34; c.setEuler(-0.8224, -0.34, 0); requestAnimationFrame(pin); })();"
+  },
+  {
+    "name": "jelly-shaft",
+    "setup": "subwave.worldClock.setDayFraction(0.32); subwave.jumpTo('jelly-in'); const c = subwave.renderer.camera;window.__pin=(window.__pin||0)+1; const tok=window.__pin;(function pin(){ if(window.__pin!==tok) return; const p=subwave.player; p.position[0]=0; p.position[1]=-160; p.position[2]=2000;p.prevPosition.set(p.position); p.velocity.fill(0); p.oxygen=p.oxygenCapacity;p.yaw=0.2; p.pitch=-0.85; c.setEuler(0.2, -0.85, 0); requestAnimationFrame(pin); })();"
+  },
+  {
+    "name": "jelly-corridor",
+    "setup": "subwave.worldClock.setDayFraction(0.32); subwave.jumpTo('jelly-in'); const c = subwave.renderer.camera;window.__pin=(window.__pin||0)+1; const tok=window.__pin;(function pin(){ if(window.__pin!==tok) return; const p=subwave.player; p.position[0]=5; p.position[1]=-185; p.position[2]=1958;p.prevPosition.set(p.position); p.velocity.fill(0); p.oxygen=p.oxygenCapacity;p.yaw=-0.10; p.pitch=-0.32; c.setEuler(-0.10, -0.32, 0); requestAnimationFrame(pin); })();"
+  },
+  {
+    "name": "jelly-hall",
+    "setup": "subwave.worldClock.setDayFraction(0.32); subwave.jumpTo('jelly-in'); const c = subwave.renderer.camera;window.__pin=(window.__pin||0)+1; const tok=window.__pin;(function pin(){ if(window.__pin!==tok) return; const p=subwave.player; p.position[0]=0; p.position[1]=-245; p.position[2]=1846;p.prevPosition.set(p.position); p.velocity.fill(0); p.oxygen=p.oxygenCapacity;p.yaw=0; p.pitch=0.10; c.setEuler(0, 0.10, 0); requestAnimationFrame(pin); })();"
+  },
+  {
+    "name": "jelly-giant",
+    "setup": "subwave.worldClock.setDayFraction(0.32); subwave.jumpTo('jelly-in'); const c = subwave.renderer.camera;window.__pin=(window.__pin||0)+1; const tok=window.__pin;(function pin(){ if(window.__pin!==tok) return; const p=subwave.player; p.position[0]=14; p.position[1]=-243; p.position[2]=1842;p.prevPosition.set(p.position); p.velocity.fill(0); p.oxygen=p.oxygenCapacity;p.yaw=-0.66; p.pitch=0.30; c.setEuler(-0.66, 0.30, 0); requestAnimationFrame(pin); })();"
+  },
+  {
+    "name": "jelly-ceiling",
+    "setup": "subwave.worldClock.setDayFraction(0.32); subwave.jumpTo('jelly-in'); const c = subwave.renderer.camera;window.__pin=(window.__pin||0)+1; const tok=window.__pin;(function pin(){ if(window.__pin!==tok) return; const p=subwave.player; p.position[0]=-6; p.position[1]=-240; p.position[2]=1836;p.prevPosition.set(p.position); p.velocity.fill(0); p.oxygen=p.oxygenCapacity;p.yaw=0.5; p.pitch=0.95; c.setEuler(0.5, 0.95, 0); requestAnimationFrame(pin); })();"
+  },
+  {
+    "name": "jelly-wide-west",
+    "setup": "subwave.worldClock.setDayFraction(0.32); subwave.jumpTo('jelly-in'); const c = subwave.renderer.camera;window.__pin=(window.__pin||0)+1; const tok=window.__pin;(function pin(){ if(window.__pin!==tok) return; const p=subwave.player; p.position[0]=-36; p.position[1]=-240; p.position[2]=1854;p.prevPosition.set(p.position); p.velocity.fill(0); p.oxygen=p.oxygenCapacity;p.yaw=0.95; p.pitch=0.06; c.setEuler(0.95, 0.06, 0); requestAnimationFrame(pin); })();"
+  }
+]

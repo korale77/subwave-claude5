@@ -1,0 +1,32 @@
+[
+  {
+    "name": "spires-standoff-anchor",
+    "note": "THE DELIVERED ARRIVAL. Whatever the jump menu resolves for Rock Spires, pinned at its own composed pose, under the variety tour's conditions (day 0.32, lamp on below 150 m, HUD off). Nothing is hard-coded: this is the only frame in this list that is evidence about the shipped resolver, and the other five are candidate sites the search reaches or nearly reaches.",
+    "setup": "subwave.worldClock.setDayFraction(0.32); subwave.hud.visible=false; for (const id of ['controls','lock-hint','jump-toast','jump-menu','boot']) { const el=document.getElementById(id); if (el) el.style.display='none'; } subwave.jumpTo('spires'); const p=subwave.player, c=subwave.renderer.camera; const X=p.position[0], Y=p.position[1], Z=p.position[2], YAW=p.yaw, PIT=p.pitch; window.__pin=(window.__pin||0)+1; const tok=window.__pin; (function s(){ if(window.__pin!==tok) return; p.inVessel=false; p.position[0]=X; p.position[1]=Y; p.position[2]=Z; p.prevPosition.set(p.position); p.velocity.fill(0); p.oxygen=p.oxygenCapacity; p.health=100; p.yaw=YAW; p.pitch=PIT; c.setEuler(YAW,PIT,0); p.lampOn=Math.max(0,-p.position[1])>150; requestAnimationFrame(s); })();"
+  },
+  {
+    "name": "spires-standoff-ref-1780",
+    "note": "THE CONTROL, and the frame the whole item is aimed at: the previous pass's measured needle site (1780, 1048) at yaw 0, pitch 0.1955. `needleAim` reproduces this pose exactly - it scores this heading 0.783 and derives pitch 0.195 from a 41.2 deg crest - which is what says the search is asking the right question. The site itself is 4 m off the 8 m refine lattice and so is not reachable.",
+    "setup": "subwave.worldClock.setDayFraction(0.32); subwave.hud.visible=false; for (const id of ['controls','lock-hint','jump-toast','jump-menu','boot']) { const el=document.getElementById(id); if (el) el.style.display='none'; } subwave.jumpTo('1780 -291.55 1048'); const p=subwave.player, c=subwave.renderer.camera; const X=1780, Y=-291.55, Z=1048, YAW=0, PIT=0.1955; window.__pin=(window.__pin||0)+1; const tok=window.__pin; (function s(){ if(window.__pin!==tok) return; p.inVessel=false; p.position[0]=X; p.position[1]=Y; p.position[2]=Z; p.prevPosition.set(p.position); p.velocity.fill(0); p.oxygen=p.oxygenCapacity; p.health=100; p.yaw=YAW; p.pitch=PIT; c.setEuler(YAW,PIT,0); p.lampOn=Math.max(0,-p.position[1])>150; requestAnimationFrame(s); })();"
+  },
+  {
+    "name": "spires-standoff-alt-1936",
+    "note": "Candidate (-1936, -592), needle score 0.947, crest 34.5 deg at yaw 165 deg. The highest-scoring needle site in the world under the shipped rules; it is not the anchor because its coarse seed 48 m away scores lower than the winner's, so the refine box never opens on it.",
+    "setup": "subwave.worldClock.setDayFraction(0.32); subwave.hud.visible=false; for (const id of ['controls','lock-hint','jump-toast','jump-menu','boot']) { const el=document.getElementById(id); if (el) el.style.display='none'; } subwave.jumpTo('-1936 -329.18 -592'); const p=subwave.player, c=subwave.renderer.camera; const X=-1936, Y=-329.18, Z=-592, YAW=2.8798, PIT=0.0785; window.__pin=(window.__pin||0)+1; const tok=window.__pin; (function s(){ if(window.__pin!==tok) return; p.inVessel=false; p.position[0]=X; p.position[1]=Y; p.position[2]=Z; p.prevPosition.set(p.position); p.velocity.fill(0); p.oxygen=p.oxygenCapacity; p.health=100; p.yaw=YAW; p.pitch=PIT; c.setEuler(YAW,PIT,0); p.lampOn=Math.max(0,-p.position[1])>150; requestAnimationFrame(s); })();"
+  },
+  {
+    "name": "spires-standoff-alt-1760",
+    "note": "Candidate (1760, 1152), needle score 0.816, crest 33.3 deg at yaw 135 deg. The nearest reachable relative of the previous pass's (1780, 1048) site.",
+    "setup": "subwave.worldClock.setDayFraction(0.32); subwave.hud.visible=false; for (const id of ['controls','lock-hint','jump-toast','jump-menu','boot']) { const el=document.getElementById(id); if (el) el.style.display='none'; } subwave.jumpTo('1760 -412.99 1152'); const p=subwave.player, c=subwave.renderer.camera; const X=1760, Y=-412.99, Z=1152, YAW=2.3562, PIT=0.0568; window.__pin=(window.__pin||0)+1; const tok=window.__pin; (function s(){ if(window.__pin!==tok) return; p.inVessel=false; p.position[0]=X; p.position[1]=Y; p.position[2]=Z; p.prevPosition.set(p.position); p.velocity.fill(0); p.oxygen=p.oxygenCapacity; p.health=100; p.yaw=YAW; p.pitch=PIT; c.setEuler(YAW,PIT,0); p.lampOn=Math.max(0,-p.position[1])>150; requestAnimationFrame(s); })();"
+  },
+  {
+    "name": "spires-standoff-alt-1824",
+    "note": "Candidate (-1824, -1120), needle score 0.943, crest 36.8 deg at yaw 240 deg. Second on the coarse grid, and the closest scoring rival to the anchor.",
+    "setup": "subwave.worldClock.setDayFraction(0.32); subwave.hud.visible=false; for (const id of ['controls','lock-hint','jump-toast','jump-menu','boot']) { const el=document.getElementById(id); if (el) el.style.display='none'; } subwave.jumpTo('-1824 -362.27 -1120'); const p=subwave.player, c=subwave.renderer.camera; const X=-1824, Y=-362.27, Z=-1120, YAW=4.1888, PIT=0.1179; window.__pin=(window.__pin||0)+1; const tok=window.__pin; (function s(){ if(window.__pin!==tok) return; p.inVessel=false; p.position[0]=X; p.position[1]=Y; p.position[2]=Z; p.prevPosition.set(p.position); p.velocity.fill(0); p.oxygen=p.oxygenCapacity; p.health=100; p.yaw=YAW; p.pitch=PIT; c.setEuler(YAW,PIT,0); p.lampOn=Math.max(0,-p.position[1])>150; requestAnimationFrame(s); })();"
+  },
+  {
+    "name": "spires-standoff-alt-632",
+    "note": "Candidate (-632, -2400), needle score 0.887, crest 38.6 deg at yaw 330 deg, and the deepest of the five at 476 m.",
+    "setup": "subwave.worldClock.setDayFraction(0.32); subwave.hud.visible=false; for (const id of ['controls','lock-hint','jump-toast','jump-menu','boot']) { const el=document.getElementById(id); if (el) el.style.display='none'; } subwave.jumpTo('-632 -475.32 -2400'); const p=subwave.player, c=subwave.renderer.camera; const X=-632, Y=-475.32, Z=-2400, YAW=5.7596, PIT=0.1504; window.__pin=(window.__pin||0)+1; const tok=window.__pin; (function s(){ if(window.__pin!==tok) return; p.inVessel=false; p.position[0]=X; p.position[1]=Y; p.position[2]=Z; p.prevPosition.set(p.position); p.velocity.fill(0); p.oxygen=p.oxygenCapacity; p.health=100; p.yaw=YAW; p.pitch=PIT; c.setEuler(YAW,PIT,0); p.lampOn=Math.max(0,-p.position[1])>150; requestAnimationFrame(s); })();"
+  }
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "name": "meadow-n",
+    "setup": "const __cl=document.getElementById('controls'); if(__cl) __cl.style.display='none'; subwave.worldClock.setDayFraction(0.32); subwave.jumpTo('meadow'); const c = subwave.renderer.camera; window.__pin=(window.__pin||0)+1; const tok=window.__pin; (function pin(){ if(window.__pin!==tok) return; const p=subwave.player; p.oxygen=p.oxygenCapacity; const yy=0.0, pp=0.04; p.yaw=yy; p.pitch=pp; c.setEuler(yy, pp, 0); requestAnimationFrame(pin); })();"
+  },
+  {
+    "name": "meadow-e",
+    "setup": "const __cl=document.getElementById('controls'); if(__cl) __cl.style.display='none'; subwave.worldClock.setDayFraction(0.32); subwave.jumpTo('meadow'); const c = subwave.renderer.camera; window.__pin=(window.__pin||0)+1; const tok=window.__pin; (function pin(){ if(window.__pin!==tok) return; const p=subwave.player; p.oxygen=p.oxygenCapacity; const yy=1.5708, pp=0.04; p.yaw=yy; p.pitch=pp; c.setEuler(yy, pp, 0); requestAnimationFrame(pin); })();"
+  },
+  {
+    "name": "meadow-s",
+    "setup": "const __cl=document.getElementById('controls'); if(__cl) __cl.style.display='none'; subwave.worldClock.setDayFraction(0.32); subwave.jumpTo('meadow'); const c = subwave.renderer.camera; window.__pin=(window.__pin||0)+1; const tok=window.__pin; (function pin(){ if(window.__pin!==tok) return; const p=subwave.player; p.oxygen=p.oxygenCapacity; const yy=3.1416, pp=0.04; p.yaw=yy; p.pitch=pp; c.setEuler(yy, pp, 0); requestAnimationFrame(pin); })();"
+  },
+  {
+    "name": "meadow-w",
+    "setup": "const __cl=document.getElementById('controls'); if(__cl) __cl.style.display='none'; subwave.worldClock.setDayFraction(0.32); subwave.jumpTo('meadow'); const c = subwave.renderer.camera; window.__pin=(window.__pin||0)+1; const tok=window.__pin; (function pin(){ if(window.__pin!==tok) return; const p=subwave.player; p.oxygen=p.oxygenCapacity; const yy=4.7124, pp=0.04; p.yaw=yy; p.pitch=pp; c.setEuler(yy, pp, 0); requestAnimationFrame(pin); })();"
+  },
+  {
+    "name": "meadow-graze",
+    "setup": "const __cl=document.getElementById('controls'); if(__cl) __cl.style.display='none'; subwave.worldClock.setDayFraction(0.32); subwave.jumpTo('meadow'); const c = subwave.renderer.camera; window.__pin=(window.__pin||0)+1; const tok=window.__pin; (function pin(){ if(window.__pin!==tok) return; const p=subwave.player; p.oxygen=p.oxygenCapacity; if(window.__gz===undefined||window.__gzTok!==tok){window.__gz=p.position[1]-1.5; window.__gzTok=tok;} p.position[1]=window.__gz; p.prevPosition.set(p.position); p.velocity.fill(0); const yy=2.0, pp=0.10; p.yaw=yy; p.pitch=pp; c.setEuler(yy, pp, 0); requestAnimationFrame(pin); })();"
+  },
+  {
+    "name": "meadow-down",
+    "setup": "const __cl=document.getElementById('controls'); if(__cl) __cl.style.display='none'; subwave.worldClock.setDayFraction(0.32); subwave.jumpTo('meadow'); const c = subwave.renderer.camera; window.__pin=(window.__pin||0)+1; const tok=window.__pin; (function pin(){ if(window.__pin!==tok) return; const p=subwave.player; p.oxygen=p.oxygenCapacity; const yy=1.0, pp=-0.9; p.yaw=yy; p.pitch=pp; c.setEuler(yy, pp, 0); requestAnimationFrame(pin); })();"
+  },
+  {
+    "name": "meadow-wide",
+    "setup": "const __cl=document.getElementById('controls'); if(__cl) __cl.style.display='none'; subwave.worldClock.setDayFraction(0.32); subwave.jumpTo('meadow'); const c = subwave.renderer.camera; window.__pin=(window.__pin||0)+1; const tok=window.__pin; (function pin(){ if(window.__pin!==tok) return; const p=subwave.player; p.oxygen=p.oxygenCapacity; p.position[1]=-13.0; p.prevPosition.set(p.position); p.velocity.fill(0); const yy=2.6, pp=-0.45; p.yaw=yy; p.pitch=pp; c.setEuler(yy, pp, 0); requestAnimationFrame(pin); })();"
+  }
+]

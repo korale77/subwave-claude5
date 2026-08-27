@@ -1,0 +1,10 @@
+[
+ {
+  "name": "final-station",
+  "setup": "subwave.worldClock.setDayFraction(0.32); subwave.player.lampOn = false; const a = subwave.jumpTo('station'); __shot.place(a.x, a.y, a.z, a.yaw, a.pitch); setTimeout(() => { try { subwave.snapWaterColumn(subwave.player.position); } catch (e) {} subwave.renderer.camera.resetHistory(); subwave.renderer.resetAdaptation(); setTimeout(() => subwave.setPaused(true), 1500); }, 900);"
+ },
+ {
+  "name": "final-kelp",
+  "setup": "subwave.worldClock.setDayFraction(0.32); subwave.player.lampOn = false; const a = subwave.jumpTo('kelp'); __shot.place(a.x, a.y, a.z, a.yaw, a.pitch); setTimeout(() => { try { subwave.snapWaterColumn(subwave.player.position); } catch (e) {} subwave.renderer.camera.resetHistory(); subwave.renderer.resetAdaptation(); setTimeout(() => subwave.setPaused(true), 1500); }, 900);"
+ }
+]

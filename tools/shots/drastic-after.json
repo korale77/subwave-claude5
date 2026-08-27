@@ -1,0 +1,34 @@
+[
+ {
+  "name": "d2-coralhz",
+  "setup": "subwave.worldClock.setDayFraction(0.32); subwave.player.lampOn = false; const a = subwave.jumpTo('coral'); __shot.place(a.x, a.y, a.z, a.yaw, -0.06); setTimeout(() => { try { subwave.snapWaterColumn(subwave.player.position); } catch (e) {} subwave.renderer.camera.resetHistory(); subwave.renderer.resetAdaptation(); setTimeout(() => subwave.setPaused(true), 1500); }, 900);"
+ },
+ {
+  "name": "d2-reef",
+  "setup": "subwave.worldClock.setDayFraction(0.32); subwave.player.lampOn = false; const a = subwave.jumpTo('reef'); __shot.place(a.x, a.y, a.z, a.yaw, a.pitch); setTimeout(() => { try { subwave.snapWaterColumn(subwave.player.position); } catch (e) {} subwave.renderer.camera.resetHistory(); subwave.renderer.resetAdaptation(); setTimeout(() => subwave.setPaused(true), 1500); }, 900);"
+ },
+ {
+  "name": "d2-kelp",
+  "setup": "subwave.worldClock.setDayFraction(0.32); subwave.player.lampOn = false; const a = subwave.jumpTo('kelp'); __shot.place(a.x, a.y, a.z, a.yaw, a.pitch); setTimeout(() => { try { subwave.snapWaterColumn(subwave.player.position); } catch (e) {} subwave.renderer.camera.resetHistory(); subwave.renderer.resetAdaptation(); setTimeout(() => subwave.setPaused(true), 1500); }, 900);"
+ },
+ {
+  "name": "d2-station",
+  "setup": "subwave.worldClock.setDayFraction(0.32); subwave.player.lampOn = false; const a = subwave.jumpTo('station'); __shot.place(a.x, a.y, a.z, a.yaw, a.pitch); setTimeout(() => { try { subwave.snapWaterColumn(subwave.player.position); } catch (e) {} subwave.renderer.camera.resetHistory(); subwave.renderer.resetAdaptation(); setTimeout(() => subwave.setPaused(true), 1500); }, 900);"
+ },
+ {
+  "name": "d2-boulders",
+  "setup": "subwave.worldClock.setDayFraction(0.32); subwave.player.lampOn = false; const a = subwave.jumpTo('boulders'); __shot.place(a.x, a.y, a.z, a.yaw, a.pitch); setTimeout(() => { try { subwave.snapWaterColumn(subwave.player.position); } catch (e) {} subwave.renderer.camera.resetHistory(); subwave.renderer.resetAdaptation(); setTimeout(() => subwave.setPaused(true), 1500); }, 900);"
+ },
+ {
+  "name": "d2-canyon",
+  "setup": "subwave.worldClock.setDayFraction(0.32); subwave.player.lampOn = true; const a = subwave.jumpTo('canyon'); __shot.place(a.x, a.y, a.z, a.yaw, a.pitch); setTimeout(() => { try { subwave.snapWaterColumn(subwave.player.position); } catch (e) {} subwave.renderer.camera.resetHistory(); subwave.renderer.resetAdaptation(); setTimeout(() => subwave.setPaused(true), 1500); }, 900);"
+ },
+ {
+  "name": "d2-ember",
+  "setup": "subwave.worldClock.setDayFraction(0.32); subwave.player.lampOn = true; const a = subwave.jumpTo('ember'); __shot.place(a.x, a.y, a.z, a.yaw, a.pitch); setTimeout(() => { try { subwave.snapWaterColumn(subwave.player.position); } catch (e) {} subwave.renderer.camera.resetHistory(); subwave.renderer.resetAdaptation(); setTimeout(() => subwave.setPaused(true), 1500); }, 900);"
+ },
+ {
+  "name": "d2-geode",
+  "setup": "subwave.worldClock.setDayFraction(0.32); subwave.player.lampOn = true; const a = subwave.jumpTo('hollow-in'); __shot.place(a.x, a.y, a.z, a.yaw, a.pitch); setTimeout(() => { try { subwave.snapWaterColumn(subwave.player.position); } catch (e) {} subwave.renderer.camera.resetHistory(); subwave.renderer.resetAdaptation(); setTimeout(() => subwave.setPaused(true), 1500); }, 900);"
+ }
+]

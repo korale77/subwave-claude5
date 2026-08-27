@@ -1,0 +1,653 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>SUBWAVE</title>
+<!-- An empty inline icon. Without it every browser requests /favicon.ico, the
+     dev server 404s, and tools/qa.mjs fails the run on a console error that has
+     nothing to do with the game. -->
+<link rel="icon" href="data:,">
+
+<style>
+  :root {
+    --ink:            #05080c;
+    --ink-2:          #0a1118;
+    --instrument:     #7fe3d4;
+    --instrument-dim: #2f6d68;
+    --amber:          #ffb757;
+    --warn:           #ff5e4d;
+    --text:           #cfe4e6;
+    --text-dim:       #63808a;
+    --sans: ui-sans-serif, -apple-system, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+    --mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    width: 100%; height: 100%;
+    background: var(--ink);
+    color: var(--text);
+    font-family: var(--sans);
+    overflow: hidden;
+    overscroll-behavior: none;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  #viewport {
+    position: fixed; inset: 0;
+    display: block;
+    width: 100%; height: 100%;
+    background: #000;
+    cursor: default;
+    touch-action: none;
+  }
+  #viewport.locked { cursor: none; }
+
+  /* ---- overlay layers ---------------------------------------------- */
+
+  /* The ladder is #controls 30 < #lock-hint 40 < #rec-indicator 45
+     < #stats 50 < #ui-layer 60 < #boot 100 < #fatal 200.
+
+     #ui-layer is POSITIONED WITH A Z-INDEX, so it is a stacking context and a
+     child's own z-index is clamped inside this band - a modal mounted in here
+     cannot cover the stats readout unless the LAYER itself is above it. 60 keeps
+     it under the boot and fatal screens, which must still cover everything. */
+  #ui-layer {
+    position: fixed; inset: 0;
+    pointer-events: none;
+    z-index: 60;
+  }
+  #ui-layer > * { pointer-events: auto; }
+
+  /* ---- boot / loading ---------------------------------------------- */
+
+  #boot {
+    position: fixed; inset: 0;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    background:
+      radial-gradient(ellipse 120% 80% at 50% 120%, #06202b 0%, transparent 60%),
+      radial-gradient(ellipse 90% 60% at 50% -10%, #0b2f3a 0%, transparent 55%),
+      var(--ink);
+    transition: opacity 900ms ease, visibility 900ms;
+  }
+  #boot.hidden { opacity: 0; visibility: hidden; }
+
+  .brand {
+    text-align: center;
+    animation: rise 1.4s cubic-bezier(.16,1,.3,1) both;
+  }
+  .brand h1 {
+    font-size: clamp(2.6rem, 9vw, 5.5rem);
+    font-weight: 200;
+    letter-spacing: 0.42em;
+    text-indent: 0.42em;
+    color: var(--text);
+    text-shadow: 0 0 60px rgba(127, 227, 212, 0.28);
+  }
+  .brand p {
+    margin-top: 1.1rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.38em;
+    text-indent: 0.38em;
+    text-transform: uppercase;
+    color: var(--instrument-dim);
+  }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(18px); filter: blur(6px); }
+    to   { opacity: 1; transform: none; filter: none; }
+  }
+
+  #boot-progress {
+    width: min(420px, 70vw);
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    animation: rise 1.4s cubic-bezier(.16,1,.3,1) 240ms both;
+  }
+  #boot-bar {
+    height: 1px;
+    background: rgba(127, 227, 212, 0.16);
+    position: relative;
+    overflow: hidden;
+  }
+  #boot-bar span {
+    position: absolute; inset: 0 100% 0 0;
+    background: linear-gradient(90deg, transparent, var(--instrument));
+    transition: right 400ms cubic-bezier(.16,1,.3,1);
+    box-shadow: 0 0 12px rgba(127, 227, 212, 0.6);
+  }
+  #boot-stage {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--instrument-dim);
+    display: flex;
+    justify-content: space-between;
+    min-height: 1em;
+  }
+
+  #boot-start {
+    font-family: var(--mono);
+    font-size: 0.74rem;
+    letter-spacing: 0.3em;
+    text-indent: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink);
+    background: var(--instrument);
+    border: 0;
+    padding: 0.95rem 2.4rem;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 500ms ease, visibility 500ms, transform 200ms ease, box-shadow 300ms;
+    box-shadow: 0 0 0 rgba(127, 227, 212, 0);
+  }
+  #boot-start.ready { opacity: 1; visibility: visible; }
+  #boot-start:hover { transform: translateY(-1px); box-shadow: 0 6px 34px rgba(127, 227, 212, 0.34); }
+  #boot-start:active { transform: translateY(0); }
+
+  #boot-hint {
+    font-family: var(--mono);
+    font-size: 0.64rem;
+    letter-spacing: 0.14em;
+    color: #3d5a64;
+    text-align: center;
+    max-width: 30rem;
+    line-height: 1.9;
+  }
+
+  /* ---- fatal error -------------------------------------------------- */
+
+  #fatal {
+    position: fixed; inset: 0;
+    z-index: 200;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.4rem;
+    padding: 2rem;
+    background: var(--ink);
+    text-align: center;
+  }
+  #fatal.show { display: flex; }
+  #fatal h2 {
+    font-weight: 300;
+    font-size: 1.5rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--warn);
+  }
+  #fatal p {
+    max-width: 46rem;
+    line-height: 1.85;
+    color: var(--text-dim);
+    font-size: 0.9rem;
+  }
+  #fatal pre {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: #4b6570;
+    background: var(--ink-2);
+    border: 1px solid #16242c;
+    padding: 1rem 1.2rem;
+    max-width: 52rem;
+    max-height: 40vh;
+    overflow: auto;
+    text-align: left;
+    white-space: pre-wrap;
+    line-height: 1.7;
+  }
+  #fatal a { color: var(--instrument); }
+
+  /* ---- perf readout -------------------------------------------------- */
+
+  #stats {
+    position: fixed;
+    top: 8px; left: 10px;
+    z-index: 50;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    line-height: 1.5;
+    color: var(--instrument);
+    text-shadow: 0 0 8px rgba(0,0,0,0.95), 0 1px 2px #000;
+    white-space: pre;
+    pointer-events: none;
+    display: none;
+  }
+  #stats.show { display: block; }
+
+  /* ---- showcase recording tell ---------------------------------------- */
+
+  /* DELIBERATELY DOM, so it stays OUT of the video: the recorder captures the
+     canvas alone (src/demo/recorder.js), and a REC dot composited into the
+     frame would be burnt into every file. Toggled by the demo director. */
+  #rec-indicator {
+    position: fixed;
+    top: 8px; right: 10px;
+    z-index: 45;
+    display: none;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.12em;
+    color: #ff5f52;
+    text-shadow: 0 0 8px rgba(0,0,0,0.95), 0 1px 2px #000;
+    pointer-events: none;
+  }
+  #rec-indicator.show { display: flex; }
+  #rec-indicator::before {
+    content: '';
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #ff5f52;
+    box-shadow: 0 0 6px rgba(255, 95, 82, 0.9);
+    animation: rec-pulse 1.6s ease-in-out infinite;
+  }
+  @keyframes rec-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
+
+  /* ---- pointer-lock affordance ------------------------------------- */
+
+  /* Mouse look does nothing without pointer lock, and a silently uncaptured
+     cursor is indistinguishable from broken controls. Say so. */
+  #lock-hint {
+    position: fixed;
+    left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 40;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 1.1rem 2rem;
+    background: rgba(5, 8, 12, 0.72);
+    border: 1px solid rgba(127, 227, 212, 0.22);
+    backdrop-filter: blur(3px);
+    pointer-events: none;
+    animation: hintIn 260ms ease both;
+  }
+  #lock-hint.show { display: flex; }
+  #lock-hint span {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.24em;
+    text-indent: 0.24em;
+    text-transform: uppercase;
+    color: var(--instrument);
+  }
+  #lock-hint em {
+    font-family: var(--mono);
+    font-style: normal;
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    color: var(--text-dim);
+  }
+  @keyframes hintIn {
+    from { opacity: 0; transform: translate(-50%, -46%); }
+    to   { opacity: 1; transform: translate(-50%, -50%); }
+  }
+
+  /* ---- contextual control legend ------------------------------------ */
+
+  /* Nobody found how to dive or climb, because nothing said so. The legend
+     tracks the active input context, so it only ever shows keys that work
+     right now. Fades after a while; H brings it back. */
+  #controls {
+    position: fixed;
+    right: 18px; top: 50%;
+    transform: translateY(-50%);
+    z-index: 30;
+    min-width: 15rem;
+    padding: 0.85rem 1rem 0.7rem;
+    background: rgba(5, 8, 12, 0.62);
+    border: 1px solid rgba(127, 227, 212, 0.16);
+    border-left: 2px solid var(--instrument);
+    backdrop-filter: blur(2px);
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 450ms ease, visibility 450ms;
+  }
+  #controls.show { opacity: 1; visibility: visible; }
+  #controls.faded { opacity: 0.34; }
+  #controls h4 {
+    margin: 0 0 0.6rem;
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.26em;
+    text-indent: 0.26em;
+    text-transform: uppercase;
+    color: var(--instrument);
+  }
+  #controls dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.28rem 0.75rem;
+    margin: 0;
+  }
+  #controls dt {
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.06em;
+    color: var(--amber);
+    text-align: right;
+    white-space: nowrap;
+  }
+  #controls dd {
+    margin: 0;
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.04em;
+    color: var(--text-dim);
+    white-space: nowrap;
+  }
+  #controls dd.key { color: var(--text); }
+  #controls > em {
+    display: block;
+    margin-top: 0.6rem;
+    font-family: var(--mono);
+    font-style: normal;
+    font-size: 0.55rem;
+    letter-spacing: 0.14em;
+    color: #3d5a64;
+    text-align: right;
+  }
+
+  /* ---- developer jump menu (J) --------------------------------------- */
+
+  /* A dev tool, styled like the instruments rather than like a game menu, so it
+     is never mistaken for player-facing UI in a screenshot. The scrim is opaque
+     to pointer events on purpose: it absorbs the click that would otherwise
+     reach the canvas and re-grab pointer lock. */
+  #jump-menu {
+    position: fixed; inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(2, 4, 7, 0.55);
+    backdrop-filter: blur(2px);
+  }
+  #jump-menu.show { display: flex; }
+  #jump-panel {
+    width: min(34rem, 92vw);
+    max-height: 86vh;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 1.15rem 0.9rem;
+    background: rgba(5, 8, 12, 0.94);
+    border: 1px solid rgba(127, 227, 212, 0.28);
+    border-top: 2px solid var(--instrument);
+    /* Its OWN keyframes, deliberately. #lock-hint's hintIn carries
+       translate(-50%, -50%), which is that element's CENTRING mechanism and not
+       a fade - borrowing it here fought the flexbox and pushed the panel half
+       its own width left and half its height up, off the top of the screen. */
+    animation: jumpIn 200ms ease both;
+  }
+  @keyframes jumpIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: none; }
+  }
+  #jump-panel:focus { outline: none; }
+  #jump-panel h4 {
+    margin: 0 0 0.15rem;
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.26em;
+    text-indent: 0.26em;
+    text-transform: uppercase;
+    color: var(--instrument);
+  }
+  #jump-status {
+    margin: 0 0 0.7rem;
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.06em;
+    color: var(--text-dim);
+    min-height: 1.1em;
+  }
+  #jump-status.warn { color: var(--amber); }
+  #jump-status.error { color: var(--warn); }
+
+  #jump-list {
+    list-style: none;
+    margin: 0 0 0.75rem;
+    padding: 0;
+    overflow-y: auto;
+    flex: 1 1 auto;
+  }
+  #jump-list button {
+    display: grid;
+    grid-template-columns: 1.4rem 1fr auto;
+    align-items: baseline;
+    gap: 0.6rem;
+    width: 100%;
+    padding: 0.3rem 0.45rem;
+    background: none;
+    border: 1px solid transparent;
+    border-radius: 0;
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.04em;
+    color: var(--text);
+    text-align: left;
+    cursor: pointer;
+  }
+  #jump-list button:hover,
+  #jump-list button:focus-visible {
+    background: rgba(127, 227, 212, 0.10);
+    border-color: rgba(127, 227, 212, 0.42);
+    outline: none;
+  }
+  #jump-list button .idx { color: var(--instrument-dim); }
+  #jump-list button .meta { color: var(--text-dim); font-size: 0.62rem; }
+  /* A biome that is dominant nowhere is still listed - it is a usable
+     destination AND a bug report - but it must not look the same as one that is. */
+  #jump-list button.weak .meta { color: var(--amber); }
+
+  #jump-form { display: flex; gap: 0.5rem; }
+  #jump-coords {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding: 0.36rem 0.5rem;
+    background: rgba(0, 0, 0, 0.55);
+    border: 1px solid rgba(127, 227, 212, 0.26);
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.05em;
+    color: var(--text);
+  }
+  #jump-coords:focus { outline: none; border-color: var(--instrument); }
+  #jump-coords::placeholder { color: #3d5a64; }
+  #jump-form button {
+    padding: 0.36rem 0.9rem;
+    background: rgba(127, 227, 212, 0.12);
+    border: 1px solid rgba(127, 227, 212, 0.4);
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--instrument);
+    cursor: pointer;
+  }
+  #jump-form button:hover { background: rgba(127, 227, 212, 0.22); }
+  #jump-panel > em {
+    display: block;
+    margin-top: 0.55rem;
+    font-family: var(--mono);
+    font-style: normal;
+    font-size: 0.55rem;
+    letter-spacing: 0.14em;
+    color: #3d5a64;
+  }
+
+  #jump-toast {
+    position: fixed;
+    left: 50%; bottom: 4.5rem;
+    transform: translateX(-50%);
+    display: none;
+    padding: 0.4rem 0.9rem;
+    background: rgba(5, 8, 12, 0.82);
+    border: 1px solid rgba(127, 227, 212, 0.24);
+    border-left: 2px solid var(--instrument);
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+    color: var(--text-dim);
+    pointer-events: none;
+  }
+  #jump-toast.show { display: block; }
+  #jump-toast.warn { color: var(--amber); }
+
+  #interaction-prompt {
+    position: fixed;
+    left: 50%; bottom: 15%;
+    transform: translateX(-50%);
+    z-index: 55;
+    display: none;
+    padding: 0.55rem 0.9rem;
+    border: 1px solid rgba(127, 227, 212, 0.30);
+    background: rgba(4, 13, 18, 0.78);
+    color: var(--instrument);
+    font-family: var(--mono);
+    font-size: 0.70rem;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    pointer-events: none;
+    backdrop-filter: blur(5px);
+  }
+  #interaction-prompt.show { display: block; }
+
+  noscript { display: block; padding: 3rem; text-align: center; }
+</style>
+</head>
+<body>
+
+<canvas id="viewport" tabindex="0"></canvas>
+
+<div id="ui-layer">
+  <!-- Developer jump menu (J). Rows are real <button>s inside a <form>, so Tab,
+       Enter and the arrow keys work natively - which matters because the menu
+       disables the input manager while it is open, making the CONTEXT.UI
+       bindings unreachable by design. -->
+  <div id="jump-menu">
+    <!-- tabindex -1 so show() can park focus here before the rows exist, which
+         is what keeps Esc and J working during the anchor scan. -->
+    <div id="jump-panel" tabindex="-1">
+      <h4>Jump to</h4>
+      <p id="jump-status"></p>
+      <ol id="jump-list"></ol>
+      <form id="jump-form">
+        <input id="jump-coords" type="text" autocomplete="off" spellcheck="false"
+               placeholder="or type  x z  /  x y z">
+        <button type="submit">Go</button>
+      </form>
+      <em>Enter jumps &middot; Esc or J closes</em>
+    </div>
+  </div>
+  <!-- The arrival readout is OUTSIDE #jump-menu on purpose: it has to be visible
+       after the menu closes, and anything inside the menu is display:none then. -->
+  <div id="jump-toast"></div>
+  <div id="interaction-prompt"></div>
+</div>
+<div id="stats"></div>
+<div id="rec-indicator" title="Recording the showcase. Resizing the window mid-take keeps the frame size it started at, so the aspect will distort.">REC</div>
+
+<div id="lock-hint">
+  <span>Click to look around</span>
+  <em>Esc releases the cursor</em>
+</div>
+
+<div id="controls">
+  <h4 id="controls-title">On foot</h4>
+  <dl id="controls-list"></dl>
+  <em>H to hide</em>
+</div>
+
+<div id="boot">
+  <div class="brand">
+    <h1>SUBWAVE</h1>
+    <p>Descend</p>
+  </div>
+
+  <div id="boot-progress">
+    <div id="boot-bar"><span id="boot-bar-fill"></span></div>
+    <div id="boot-stage"><em id="boot-stage-text">Initialising</em><em id="boot-stage-pct">0%</em></div>
+  </div>
+
+  <button id="boot-start">Begin</button>
+  <div id="boot-hint">
+    Mouse to look &middot; WASD to move &middot; E to board &middot; Space up &middot; Ctrl down &middot; Esc frees the cursor
+  </div>
+</div>
+
+<div id="fatal">
+  <h2 id="fatal-title">Cannot start</h2>
+  <p id="fatal-message"></p>
+  <pre id="fatal-detail"></pre>
+</div>
+
+<noscript>SUBWAVE requires JavaScript and WebGPU.</noscript>
+
+<script type="module">
+  // Surface any load-time failure in the overlay rather than the console alone.
+  const fatal = (title, message, detail) => {
+    const el = document.getElementById('fatal');
+    document.getElementById('fatal-title').textContent = title;
+    document.getElementById('fatal-message').innerHTML = message;
+    const d = document.getElementById('fatal-detail');
+    if (detail) { d.textContent = detail; d.style.display = 'block'; }
+    else { d.style.display = 'none'; }
+    el.classList.add('show');
+    document.getElementById('boot').classList.add('hidden');
+  };
+  window.__subwaveFatal = fatal;
+
+  window.addEventListener('error', (e) => {
+    if (!document.getElementById('fatal').classList.contains('show')) {
+      fatal('Something broke', 'An unexpected error occurred while starting the game.',
+            (e.error && e.error.stack) || e.message);
+    }
+  });
+  window.addEventListener('unhandledrejection', (e) => {
+    if (!document.getElementById('fatal').classList.contains('show')) {
+      const r = e.reason;
+      fatal('Something broke', (r && r.message) || 'An unexpected error occurred.',
+            (r && r.stack) || String(r));
+    }
+  });
+
+  if (!('gpu' in navigator)) {
+    fatal(
+      'WebGPU required',
+      'SUBWAVE renders entirely with WebGPU and has no fallback path.<br>' +
+      'Please open it in the latest desktop <strong>Google Chrome</strong>.',
+      'navigator.gpu is undefined.\n\n' +
+      'Checklist:\n' +
+      '  1. Chrome 113+ on Windows, macOS, ChromeOS or Linux (desktop).\n' +
+      '  2. chrome://settings -> System -> "Use graphics acceleration when available" = on.\n' +
+      '  3. Visit chrome://gpu and confirm WebGPU is not blocklisted.\n' +
+      '  4. On Linux you may need: --enable-features=Vulkan,UseSkiaRenderer',
+    );
+  } else {
+    import('./src/main.js').catch((err) => {
+      fatal('Failed to load', 'The game modules could not be loaded.', err.stack || String(err));
+    });
+  }
+</script>
+
+</body>
+</html>

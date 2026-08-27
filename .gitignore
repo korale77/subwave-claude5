@@ -1,0 +1,60 @@
+# ---- generated and captured output ----
+#
+# Every directory below is written by a tool and is reproducible by re-running
+# it: qa.mjs, shot.mjs, test-variety.mjs, scatter-census.mjs, test-parity.mjs and
+# demo-capture.mjs. The browser tools additionally drop multi-hundred-megabyte
+# Chrome profiles into theirs. None of it is repository content.
+#
+# ref-images/ and dbg-images/ are the exception to the "reproducible" half and
+# not to the rule: they are hand-captured art-direction and debugging frames,
+# local reference material that no tool can regenerate. They are still not
+# repository content. Keep your own backup - nothing here will restore them.
+#
+# THESE ARE WHOLE-DIRECTORY RULES ON PURPOSE. No per-file exceptions, no
+# per-extension patterns. The arrangement this replaced carried forty lines of
+# `!` re-includes for milestone reports, and it only worked because the parent
+# directory itself was left un-excluded - exclude the directory and no `!` below
+# it can bring anything back, which is a trap nobody remembers at the moment
+# they add the rule. If a report becomes a reference someone will diff against
+# later, copy it OUT of these directories; do not punch a hole in the rule.
+census-output/
+dbg-images/
+demo-output/
+parity-output/
+qa-output/
+ref-images/
+shot-output/
+shot-output-before/
+variety-output/
+
+# ---- local working notes ----
+#
+# NOTES_* are working documents - bug lists, biome briefs, session handoffs -
+# that belong to whoever is doing the work, not to the repository. They get
+# rewritten and deleted between sessions, so NOTHING IN THE TREE MAY CITE ONE BY
+# NAME: a comment pointing at a file no clone has is exactly the dead-reference
+# bug this project keeps repeating. State the finding at the site that depends
+# on it instead. (STATUS.md was the same kind of document and was deleted in
+# f32d5a4; its 35 citations came out with this rule.)
+NOTES_*
+
+# ---- dependencies ----
+#
+# There are no runtime dependencies and there must never be any (see CLAUDE.md),
+# but the tooling still runs under node, so keep an accidental install out.
+node_modules/
+package-lock.json
+
+# ---- agent and editor state ----
+#
+# .claude/ holds per-machine Claude Code state (settings.local.json, task locks).
+# It was excluded only by `.git/info/exclude`, which is PER-CLONE and does not
+# travel: the rule has to live here or the next clone offers the directory up.
+.claude/
+
+# ---- editor and OS noise ----
+.DS_Store
+*.log
+*.swp
+.vscode/
+.idea/

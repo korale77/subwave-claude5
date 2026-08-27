@@ -1,0 +1,21 @@
+{
+  "name": "subwave",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "description": "SUBWAVE - a browser-native WebGPU ocean exploration game. Zero runtime dependencies.",
+  "scripts": {
+    "start": "node server.mjs",
+    "dev": "node server.mjs",
+    "check": "node tools/check.mjs",
+    "test": "node tools/check.mjs && node tools/test-layout.mjs && node tools/test-noise.mjs",
+    "qa": "node tools/qa.mjs",
+    "qa:headed": "node tools/qa.mjs --headed --keep-open",
+    "test:gpu": "node tools/wgsl-compile.mjs",
+    "wgsl": "node tools/wgsl-compile.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

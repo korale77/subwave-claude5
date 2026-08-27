@@ -1,0 +1,34 @@
+[
+  {
+    "name": "sea-sun",
+    "setup": "subwave.worldClock.setDayFraction(0.30); __shot.place(0, 4, 200, __shot.sunYaw(0), -0.10); subwave.setPaused(true);"
+  },
+  {
+    "name": "sea-away",
+    "setup": "subwave.worldClock.setDayFraction(0.30); __shot.place(0, 4, 200, __shot.sunYaw(Math.PI), -0.10); subwave.setPaused(true);"
+  },
+  {
+    "name": "sea-high",
+    "setup": "subwave.worldClock.setDayFraction(0.33); __shot.place(0, 26, 200, __shot.sunYaw(0), -0.30); subwave.setPaused(true);"
+  },
+  {
+    "name": "sea-down",
+    "setup": "subwave.worldClock.setDayFraction(0.45); __shot.place(0, 14, 200, __shot.sunYaw(1.4), -0.60); subwave.setPaused(true);"
+  },
+  {
+    "name": "shoreline",
+    "setup": "subwave.worldClock.setDayFraction(0.32); const p = subwave.spawn.position; __shot.place(p[0], p[1] + 6, p[2], subwave.spawn.shoreBearing, -0.30); subwave.setPaused(true);"
+  },
+  {
+    "name": "reef-floor",
+    "setup": "subwave.worldClock.setDayFraction(0.5); __shot.place(0, -10, 240, 1.2, -0.55); subwave.setPaused(true);"
+  },
+  {
+    "name": "reef-caustics",
+    "setup": "subwave.worldClock.setDayFraction(0.5); __shot.place(0, -11, 240, 1.2, -0.95); subwave.setPaused(true);"
+  },
+  {
+    "name": "reef-up",
+    "setup": "subwave.worldClock.setDayFraction(0.5); __shot.place(0, -10, 240, 1.2, 0.80); subwave.setPaused(true);"
+  }
+]

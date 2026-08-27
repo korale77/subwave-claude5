@@ -1,0 +1,26 @@
+[
+ {
+  "name": "agx-coralhz-s135",
+  "setup": "subwave.worldClock.setDayFraction(0.32); subwave.player.lampOn = false; const a = subwave.jumpTo('coral'); __shot.place(a.x, a.y, a.z, a.yaw, -0.06); import('/src/core/constants.js').then(m => { Object.assign(m.RENDER, {\"AGX_LOOK_SATURATION\": 1.35}); try { subwave.snapWaterColumn(subwave.player.position); } catch (e) {} subwave.renderer.camera.resetHistory(); subwave.renderer.resetAdaptation(); setTimeout(() => subwave.setPaused(true), 1200); });"
+ },
+ {
+  "name": "agx-beach-s135",
+  "setup": "subwave.worldClock.setDayFraction(0.32); __shot.place(0, 2.6, 240, __shot.sunYaw(0.6), -0.05); import('/src/core/constants.js').then(m => { Object.assign(m.RENDER, {\"AGX_LOOK_SATURATION\": 1.35}); try { subwave.snapWaterColumn(subwave.player.position); } catch (e) {} subwave.renderer.camera.resetHistory(); subwave.renderer.resetAdaptation(); setTimeout(() => subwave.setPaused(true), 1200); });"
+ },
+ {
+  "name": "agx-coralhz-s145",
+  "setup": "subwave.worldClock.setDayFraction(0.32); subwave.player.lampOn = false; const a = subwave.jumpTo('coral'); __shot.place(a.x, a.y, a.z, a.yaw, -0.06); import('/src/core/constants.js').then(m => { Object.assign(m.RENDER, {\"AGX_LOOK_SATURATION\": 1.45}); try { subwave.snapWaterColumn(subwave.player.position); } catch (e) {} subwave.renderer.camera.resetHistory(); subwave.renderer.resetAdaptation(); setTimeout(() => subwave.setPaused(true), 1200); });"
+ },
+ {
+  "name": "agx-beach-s145",
+  "setup": "subwave.worldClock.setDayFraction(0.32); __shot.place(0, 2.6, 240, __shot.sunYaw(0.6), -0.05); import('/src/core/constants.js').then(m => { Object.assign(m.RENDER, {\"AGX_LOOK_SATURATION\": 1.45}); try { subwave.snapWaterColumn(subwave.player.position); } catch (e) {} subwave.renderer.camera.resetHistory(); subwave.renderer.resetAdaptation(); setTimeout(() => subwave.setPaused(true), 1200); });"
+ },
+ {
+  "name": "agx-coralhz-s155",
+  "setup": "subwave.worldClock.setDayFraction(0.32); subwave.player.lampOn = false; const a = subwave.jumpTo('coral'); __shot.place(a.x, a.y, a.z, a.yaw, -0.06); import('/src/core/constants.js').then(m => { Object.assign(m.RENDER, {\"AGX_LOOK_SATURATION\": 1.55}); try { subwave.snapWaterColumn(subwave.player.position); } catch (e) {} subwave.renderer.camera.resetHistory(); subwave.renderer.resetAdaptation(); setTimeout(() => subwave.setPaused(true), 1200); });"
+ },
+ {
+  "name": "agx-beach-s155",
+  "setup": "subwave.worldClock.setDayFraction(0.32); __shot.place(0, 2.6, 240, __shot.sunYaw(0.6), -0.05); import('/src/core/constants.js').then(m => { Object.assign(m.RENDER, {\"AGX_LOOK_SATURATION\": 1.55}); try { subwave.snapWaterColumn(subwave.player.position); } catch (e) {} subwave.renderer.camera.resetHistory(); subwave.renderer.resetAdaptation(); setTimeout(() => subwave.setPaused(true), 1200); });"
+ }
+]

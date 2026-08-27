@@ -1,0 +1,26 @@
+[
+  {
+    "name": "bulb-n",
+    "setup": "const __cl=document.getElementById('controls'); if(__cl) __cl.style.display='none'; subwave.worldClock.setDayFraction(0.32); subwave.jumpTo('bulb'); const c = subwave.renderer.camera; window.__pin=(window.__pin||0)+1; const tok=window.__pin; (function pin(){ if(window.__pin!==tok) return; const p=subwave.player; p.oxygen=p.oxygenCapacity; const yy=0.0, pp=0.04; p.yaw=yy; p.pitch=pp; c.setEuler(yy, pp, 0); requestAnimationFrame(pin); })();"
+  },
+  {
+    "name": "bulb-e",
+    "setup": "const __cl=document.getElementById('controls'); if(__cl) __cl.style.display='none'; subwave.worldClock.setDayFraction(0.32); subwave.jumpTo('bulb'); const c = subwave.renderer.camera; window.__pin=(window.__pin||0)+1; const tok=window.__pin; (function pin(){ if(window.__pin!==tok) return; const p=subwave.player; p.oxygen=p.oxygenCapacity; const yy=1.5708, pp=0.04; p.yaw=yy; p.pitch=pp; c.setEuler(yy, pp, 0); requestAnimationFrame(pin); })();"
+  },
+  {
+    "name": "bulb-s",
+    "setup": "const __cl=document.getElementById('controls'); if(__cl) __cl.style.display='none'; subwave.worldClock.setDayFraction(0.32); subwave.jumpTo('bulb'); const c = subwave.renderer.camera; window.__pin=(window.__pin||0)+1; const tok=window.__pin; (function pin(){ if(window.__pin!==tok) return; const p=subwave.player; p.oxygen=p.oxygenCapacity; const yy=3.1416, pp=0.04; p.yaw=yy; p.pitch=pp; c.setEuler(yy, pp, 0); requestAnimationFrame(pin); })();"
+  },
+  {
+    "name": "bulb-w",
+    "setup": "const __cl=document.getElementById('controls'); if(__cl) __cl.style.display='none'; subwave.worldClock.setDayFraction(0.32); subwave.jumpTo('bulb'); const c = subwave.renderer.camera; window.__pin=(window.__pin||0)+1; const tok=window.__pin; (function pin(){ if(window.__pin!==tok) return; const p=subwave.player; p.oxygen=p.oxygenCapacity; const yy=4.7124, pp=0.04; p.yaw=yy; p.pitch=pp; c.setEuler(yy, pp, 0); requestAnimationFrame(pin); })();"
+  },
+  {
+    "name": "bulb-up",
+    "setup": "const __cl=document.getElementById('controls'); if(__cl) __cl.style.display='none'; subwave.worldClock.setDayFraction(0.32); subwave.jumpTo('bulb'); const c = subwave.renderer.camera; window.__pin=(window.__pin||0)+1; const tok=window.__pin; (function pin(){ if(window.__pin!==tok) return; const p=subwave.player; p.oxygen=p.oxygenCapacity; const yy=0.8, pp=0.5; p.yaw=yy; p.pitch=pp; c.setEuler(yy, pp, 0); requestAnimationFrame(pin); })();"
+  },
+  {
+    "name": "bulb-wide",
+    "setup": "const __cl=document.getElementById('controls'); if(__cl) __cl.style.display='none'; subwave.worldClock.setDayFraction(0.32); subwave.jumpTo('bulb'); const c = subwave.renderer.camera; window.__pin=(window.__pin||0)+1; const tok=window.__pin; (function pin(){ if(window.__pin!==tok) return; const p=subwave.player; p.oxygen=p.oxygenCapacity; if(window.__wz===undefined||window.__wzTok!==tok){window.__wz=Math.min(p.position[1]+11, -8); window.__wzTok=tok;} p.position[1]=window.__wz; p.prevPosition.set(p.position); p.velocity.fill(0); const yy=2.6, pp=-0.30; p.yaw=yy; p.pitch=pp; c.setEuler(yy, pp, 0); requestAnimationFrame(pin); })();"
+  }
+]

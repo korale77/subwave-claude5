@@ -1,0 +1,50 @@
+[
+ {
+  "name": "veil-coral-id",
+  "setup": "subwave.worldClock.setDayFraction(0.32); subwave.player.lampOn = false; const a = subwave.jumpTo('coral'); __shot.place(a.x, a.y, a.z, a.yaw, a.pitch); subwave.snapWaterColumn(subwave.player.position); import('/src/core/constants.js').then(m => { Object.assign(m.RENDER, {\"VEIL_DIFFUSE_GAIN\": 1.0, \"VEIL_CHROMA\": 0.0}); subwave.renderer.camera.resetHistory(); subwave.renderer.resetAdaptation(); setTimeout(() => subwave.setPaused(true), 1200); });"
+ },
+ {
+  "name": "veil-coralhz-id",
+  "setup": "subwave.worldClock.setDayFraction(0.32); subwave.player.lampOn = false; const a = subwave.jumpTo('coral'); __shot.place(a.x, a.y, a.z, a.yaw, -0.06); subwave.snapWaterColumn(subwave.player.position); import('/src/core/constants.js').then(m => { Object.assign(m.RENDER, {\"VEIL_DIFFUSE_GAIN\": 1.0, \"VEIL_CHROMA\": 0.0}); subwave.renderer.camera.resetHistory(); subwave.renderer.resetAdaptation(); setTimeout(() => subwave.setPaused(true), 1200); });"
+ },
+ {
+  "name": "veil-kelp-id",
+  "setup": "subwave.worldClock.setDayFraction(0.32); subwave.player.lampOn = false; const a = subwave.jumpTo('kelp'); __shot.place(a.x, a.y, a.z, a.yaw, a.pitch); subwave.snapWaterColumn(subwave.player.position); import('/src/core/constants.js').then(m => { Object.assign(m.RENDER, {\"VEIL_DIFFUSE_GAIN\": 1.0, \"VEIL_CHROMA\": 0.0}); subwave.renderer.camera.resetHistory(); subwave.renderer.resetAdaptation(); setTimeout(() => subwave.setPaused(true), 1200); });"
+ },
+ {
+  "name": "veil-coral-g50",
+  "setup": "subwave.worldClock.setDayFraction(0.32); subwave.player.lampOn = false; const a = subwave.jumpTo('coral'); __shot.place(a.x, a.y, a.z, a.yaw, a.pitch); subwave.snapWaterColumn(subwave.player.position); import('/src/core/constants.js').then(m => { Object.assign(m.RENDER, {\"VEIL_DIFFUSE_GAIN\": 0.5, \"VEIL_CHROMA\": 0.0}); subwave.renderer.camera.resetHistory(); subwave.renderer.resetAdaptation(); setTimeout(() => subwave.setPaused(true), 1200); });"
+ },
+ {
+  "name": "veil-coralhz-g50",
+  "setup": "subwave.worldClock.setDayFraction(0.32); subwave.player.lampOn = false; const a = subwave.jumpTo('coral'); __shot.place(a.x, a.y, a.z, a.yaw, -0.06); subwave.snapWaterColumn(subwave.player.position); import('/src/core/constants.js').then(m => { Object.assign(m.RENDER, {\"VEIL_DIFFUSE_GAIN\": 0.5, \"VEIL_CHROMA\": 0.0}); subwave.renderer.camera.resetHistory(); subwave.renderer.resetAdaptation(); setTimeout(() => subwave.setPaused(true), 1200); });"
+ },
+ {
+  "name": "veil-kelp-g50",
+  "setup": "subwave.worldClock.setDayFraction(0.32); subwave.player.lampOn = false; const a = subwave.jumpTo('kelp'); __shot.place(a.x, a.y, a.z, a.yaw, a.pitch); subwave.snapWaterColumn(subwave.player.position); import('/src/core/constants.js').then(m => { Object.assign(m.RENDER, {\"VEIL_DIFFUSE_GAIN\": 0.5, \"VEIL_CHROMA\": 0.0}); subwave.renderer.camera.resetHistory(); subwave.renderer.resetAdaptation(); setTimeout(() => subwave.setPaused(true), 1200); });"
+ },
+ {
+  "name": "veil-coral-g50c50",
+  "setup": "subwave.worldClock.setDayFraction(0.32); subwave.player.lampOn = false; const a = subwave.jumpTo('coral'); __shot.place(a.x, a.y, a.z, a.yaw, a.pitch); subwave.snapWaterColumn(subwave.player.position); import('/src/core/constants.js').then(m => { Object.assign(m.RENDER, {\"VEIL_DIFFUSE_GAIN\": 0.5, \"VEIL_CHROMA\": 0.5}); subwave.renderer.camera.resetHistory(); subwave.renderer.resetAdaptation(); setTimeout(() => subwave.setPaused(true), 1200); });"
+ },
+ {
+  "name": "veil-coralhz-g50c50",
+  "setup": "subwave.worldClock.setDayFraction(0.32); subwave.player.lampOn = false; const a = subwave.jumpTo('coral'); __shot.place(a.x, a.y, a.z, a.yaw, -0.06); subwave.snapWaterColumn(subwave.player.position); import('/src/core/constants.js').then(m => { Object.assign(m.RENDER, {\"VEIL_DIFFUSE_GAIN\": 0.5, \"VEIL_CHROMA\": 0.5}); subwave.renderer.camera.resetHistory(); subwave.renderer.resetAdaptation(); setTimeout(() => subwave.setPaused(true), 1200); });"
+ },
+ {
+  "name": "veil-kelp-g50c50",
+  "setup": "subwave.worldClock.setDayFraction(0.32); subwave.player.lampOn = false; const a = subwave.jumpTo('kelp'); __shot.place(a.x, a.y, a.z, a.yaw, a.pitch); subwave.snapWaterColumn(subwave.player.position); import('/src/core/constants.js').then(m => { Object.assign(m.RENDER, {\"VEIL_DIFFUSE_GAIN\": 0.5, \"VEIL_CHROMA\": 0.5}); subwave.renderer.camera.resetHistory(); subwave.renderer.resetAdaptation(); setTimeout(() => subwave.setPaused(true), 1200); });"
+ },
+ {
+  "name": "veil-coral-g35c80",
+  "setup": "subwave.worldClock.setDayFraction(0.32); subwave.player.lampOn = false; const a = subwave.jumpTo('coral'); __shot.place(a.x, a.y, a.z, a.yaw, a.pitch); subwave.snapWaterColumn(subwave.player.position); import('/src/core/constants.js').then(m => { Object.assign(m.RENDER, {\"VEIL_DIFFUSE_GAIN\": 0.35, \"VEIL_CHROMA\": 0.8}); subwave.renderer.camera.resetHistory(); subwave.renderer.resetAdaptation(); setTimeout(() => subwave.setPaused(true), 1200); });"
+ },
+ {
+  "name": "veil-coralhz-g35c80",
+  "setup": "subwave.worldClock.setDayFraction(0.32); subwave.player.lampOn = false; const a = subwave.jumpTo('coral'); __shot.place(a.x, a.y, a.z, a.yaw, -0.06); subwave.snapWaterColumn(subwave.player.position); import('/src/core/constants.js').then(m => { Object.assign(m.RENDER, {\"VEIL_DIFFUSE_GAIN\": 0.35, \"VEIL_CHROMA\": 0.8}); subwave.renderer.camera.resetHistory(); subwave.renderer.resetAdaptation(); setTimeout(() => subwave.setPaused(true), 1200); });"
+ },
+ {
+  "name": "veil-kelp-g35c80",
+  "setup": "subwave.worldClock.setDayFraction(0.32); subwave.player.lampOn = false; const a = subwave.jumpTo('kelp'); __shot.place(a.x, a.y, a.z, a.yaw, a.pitch); subwave.snapWaterColumn(subwave.player.position); import('/src/core/constants.js').then(m => { Object.assign(m.RENDER, {\"VEIL_DIFFUSE_GAIN\": 0.35, \"VEIL_CHROMA\": 0.8}); subwave.renderer.camera.resetHistory(); subwave.renderer.resetAdaptation(); setTimeout(() => subwave.setPaused(true), 1200); });"
+ }
+]

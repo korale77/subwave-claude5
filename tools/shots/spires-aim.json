@@ -1,0 +1,14 @@
+[
+  {
+    "name": "spires-aim-shipped",
+    "setup": "subwave.worldClock.setDayFraction(0.32); subwave.hud.visible=false; for (const id of ['controls','lock-hint','jump-toast','jump-menu','boot']) { const el=document.getElementById(id); if (el) el.style.display='none'; } subwave.jumpTo('spires'); const p=subwave.player, c=subwave.renderer.camera; const X=p.position[0], Y=p.position[1], Z=p.position[2]; const YAW=p.yaw, PIT=p.pitch; window.__pin=(window.__pin||0)+1; const tok=window.__pin; (function s(){ if(window.__pin!==tok) return; p.inVessel=false; p.position[0]=X; p.position[1]=Y; p.position[2]=Z; p.prevPosition.set(p.position); p.velocity.fill(0); p.oxygen=p.oxygenCapacity; p.yaw=YAW; p.pitch=PIT; c.setEuler(YAW,PIT,0); p.lampOn=Math.max(0,-p.position[1])>150; requestAnimationFrame(s); })();"
+  },
+  {
+    "name": "spires-aim-buried",
+    "setup": "subwave.worldClock.setDayFraction(0.32); subwave.hud.visible=false; for (const id of ['controls','lock-hint','jump-toast','jump-menu','boot']) { const el=document.getElementById(id); if (el) el.style.display='none'; } subwave.jumpTo('spires'); const p=subwave.player, c=subwave.renderer.camera; const X=p.position[0], Y=p.position[1], Z=p.position[2]; const YAW=0.635, PIT=-0.35; window.__pin=(window.__pin||0)+1; const tok=window.__pin; (function s(){ if(window.__pin!==tok) return; p.inVessel=false; p.position[0]=X; p.position[1]=Y; p.position[2]=Z; p.prevPosition.set(p.position); p.velocity.fill(0); p.oxygen=p.oxygenCapacity; p.yaw=YAW; p.pitch=PIT; c.setEuler(YAW,PIT,0); p.lampOn=Math.max(0,-p.position[1])>150; requestAnimationFrame(s); })();"
+  },
+  {
+    "name": "spires-aim-empty",
+    "setup": "subwave.worldClock.setDayFraction(0.32); subwave.hud.visible=false; for (const id of ['controls','lock-hint','jump-toast','jump-menu','boot']) { const el=document.getElementById(id); if (el) el.style.display='none'; } subwave.jumpTo('spires'); const p=subwave.player, c=subwave.renderer.camera; const X=p.position[0], Y=p.position[1], Z=p.position[2]; const YAW=-1.833, PIT=-0.35; window.__pin=(window.__pin||0)+1; const tok=window.__pin; (function s(){ if(window.__pin!==tok) return; p.inVessel=false; p.position[0]=X; p.position[1]=Y; p.position[2]=Z; p.prevPosition.set(p.position); p.velocity.fill(0); p.oxygen=p.oxygenCapacity; p.yaw=YAW; p.pitch=PIT; c.setEuler(YAW,PIT,0); p.lampOn=Math.max(0,-p.position[1])>150; requestAnimationFrame(s); })();"
+  }
+]
